@@ -1,6 +1,21 @@
-//write connection to our database. This is where our 
-//SQL queries will reside
+//write connection to our database. 
 
-//findAllemployee findAllManagers, find AllDept's etc.
+const mysql = require('mysql');
 
-//export to one level up 
+
+
+
+const database = mysql.createConnection({
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'Marathon705!',
+    database: 'Employee'
+});
+
+database.connect(function (err) {
+    if (err) throw (err);
+    
+});
+
+module.exports = database
