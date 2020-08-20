@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 const { viewEmployees } = require('./database/queries.js');
 const questions = [{
     type: 'list',
-    name: 'firstchoice',
+    name: 'answers',
     message: 'What would you like to do?',
     choices: [{ name: 'view all employees', value: 'view_employees' },
     { name: 'view all roles', value: 'view_roles' },
@@ -16,13 +16,13 @@ const questions = [{
     { name: 'update employee roles', value: 'update_roles' }
     ]
 }]
-
+init();
 function init() {
     inquirer.prompt(questions)
         .then(answers => {
             switch (answers) {
                 case 'view_employees':
-                    return viewEmployees()
+                    return viewAllEmployees()
                 case 'view_roles':
                     return viewRoles()
                 case 'view_departments':
@@ -38,7 +38,7 @@ function init() {
             }
         })
 }
-init();
+
 
 async function viewAllEmployees(err, result) {
     const employees = await database.getEmployees;
