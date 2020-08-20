@@ -40,8 +40,6 @@ function init() {
 }
 init();
 
-
-
 async function viewAllEmployees(err, result) {
     const employees = await database.getEmployees;
     console.table(employees)

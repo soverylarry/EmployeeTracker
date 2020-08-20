@@ -7,7 +7,7 @@ class connection {
         this.database = database
     }
 
-    get employee() {
+    get employees() {
         return this.database.query(
          ("SELECT * FROM employee.employee")
         )}         
