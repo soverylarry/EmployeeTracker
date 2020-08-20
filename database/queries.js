@@ -3,14 +3,14 @@
 const database = require('./app.js')
 class connection {
     //all functions and queries
-    constructor(database){
-        this.database=database
+    constructor(database) {
+        this.database = database
     }
-    findallemployees(){
+
+    get employee() {
         return this.database.query(
-            'Select * from employee.employee'
-        )
-    }
+         ("SELECT * FROM employee.employee")
+        )}         
 }
 
 module.exports = new connection(database)

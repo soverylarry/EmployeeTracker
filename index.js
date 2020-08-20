@@ -1,45 +1,21 @@
 const connection = require('./database/queries.js')
 //Const's will reside here
 
-
-
-
 const inquirer = require('inquirer');
+const { viewEmployees } = require('./database/queries.js');
 const questions = [{
     type: 'list',
     name: 'firstchoice',
-    message: 'what is the first function',
-    choices: [{ name: 'view all employees', value: 'view_employees' }]
-}
-]
-
-
-//database connection
-
-
-
-// app.use 
-
-// app.get('/', function (req,res){
-//     return this.connection.query('select *')
-//     //res.send('Employee Tracker Home page')
-// })
-
-// app.get('/user', function (req,res){
-//     res.send('Employee Tracker User page')
-// })
-
-// app.post('/', function (req, res){
-//     res.send('got a POST request')
-// })
-
-// app.put('/user', function (req,res){
-//     res.send('got a PUT requst at /user')
-// })
-
-// app.delete('/user', function (req, res) {
-//     res.send('Got a DELETE request at /user')
-//   })
+    message: 'What would you like to do?',
+    choices: [{ name: 'view all employees', value: 'view_employees' },
+    { name: 'view all roles', value: 'view_roles' },
+    { name: 'view all departments', value: 'view_departments' },
+    { name: 'add departments', value: 'add_departments' },
+    { name: 'add roles', value: 'add_roles' },
+    { name: 'add employees', value: 'add_employees' },
+    { name: 'update employee roles', value: 'update_roles' }
+    ]
+}]
 
 function init() {
     inquirer.prompt(questions)
@@ -47,25 +23,29 @@ function init() {
             switch (answers) {
                 case 'view_employees':
                     return viewEmployees()
+                case 'view_roles':
+                    return viewRoles()
+                case 'view_departments':
+                    return viewDepartments()
+                case 'add_departments':
+                    return addDepartments()
+                case 'add_roles':
+                    return addRoles()
+                case 'add_employees':
+                    return addEmployees()
+                case 'update_roles':
+                    return updateRoles()
             }
         })
 }
+init();
 
-async function viewEmployees() {
 
-    const employees = await database
+
+async function viewAllEmployees(err, result) {
+    const employees = await database.getEmployees;
+    console.table(employees)
 }
 
 
 
-// app.listen('8080', () => {
-//     console.log('server has started on port 8080')
-// })
-
-
-
-//this will be the looooonnnggg file.  all of my Inquirer questions..
-// Init function
-//branching and Switch functions, tree out all the different branches.
-
-// big Switch case in the middle
