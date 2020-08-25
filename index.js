@@ -1,8 +1,9 @@
 const connection = require('./database/queries.js')
 //Const's will reside here
-
+const database = require('./database/app.js')
 const inquirer = require('inquirer');
 const { viewEmployees } = require('./database/queries.js');
+const cTable = require('console.table')
 const questions = [{
     type: 'list',
     name: 'answers',
@@ -16,11 +17,12 @@ const questions = [{
     { name: 'update employee roles', value: 'update_roles' }
     ]
 }]
+
 init();
 function init() {
     inquirer.prompt(questions)
         .then(answers => {
-            switch (answers) {
+            switch (answers.answers) {
                 case 'view_employees':
                     return viewAllEmployees()
                 case 'view_roles':
@@ -40,8 +42,10 @@ function init() {
 }
 
 
-async function viewAllEmployees(err, result) {
-    const employees = await database.getEmployees;
+async function viewAllEmployees(err, res) {
+    if (err) throw err;
+    const employees = await connection.employees;
+    console.log(employees)
     console.table(employees)
 }
 
