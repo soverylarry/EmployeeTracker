@@ -45,7 +45,7 @@ function init() {
 async function viewAllEmployees(err, res) {
     if (err) throw err;
     const employees = await connection.employees;
-    console.log(employees)
+    //console.log(employees)
     console.table(employees)
 }
 
