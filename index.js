@@ -82,6 +82,6 @@ async function addRoles(err, res) {
 ])
     
     const addNewRole = await connection.addRoles
-    console.table(addNewRole)
+    console.table(newRole)
 
 }
