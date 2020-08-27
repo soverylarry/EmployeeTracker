@@ -2,7 +2,7 @@ const connection = require('./database/queries.js')
 //Const's will reside here
 const database = require('./database/app.js')
 const inquirer = require('inquirer');
-const { viewEmployees } = require('./database/queries.js');
+const { viewEmployees, departments } = require('./database/queries.js');
 const cTable = require('console.table')
 const questions = [{
     type: 'list',
@@ -49,5 +49,38 @@ async function viewAllEmployees(err, res) {
     console.table(employees)
 }
 
+async function viewDepartments(err, res) {
+    if (err) throw err;
+    const departments = await connection.departments;
+    console.table(departments)
+}
 
+async function viewRoles(err, res) {
+    if (err) throw err;
+    const roles = await connection.roles;
+    console.table(roles)
+}
 
+async function addRoles(err, res) {
+    if (err) throw err;
+    inquirer.prompt([{
+        name: "addRole",
+        type: "input",
+        message: "Please give the new Role a name:"
+    },
+    {
+        name: "salary",
+        type: "input",
+        message: "Enter starting Salary"
+    },
+    // {
+    //     name: "department",
+    //     type: "list",
+    //     message: "Select a department",
+    //     choices: ,
+    //   },
+])
+    const newRole = await connection.newRole
+    console.table(newRole)
+
+}

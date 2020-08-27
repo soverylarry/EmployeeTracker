@@ -9,8 +9,28 @@ class connection {
 
     get employees() {
         return this.database.query(
-         ("SELECT * FROM employee.employee")
-        )}         
+            ("SELECT * FROM employee.employee")
+        )
+    }
+
+    get departments() {
+        return this.database.query(
+            ("SELECT * FROM employee.department")
+        )
+    }
+
+    get roles() {
+        return this.database.query(
+            ("SELECT * FROM employee.role")
+        )
+    }
+
+    addRoles(newRole) {
+        return this.database.query(
+            ("INSERT INTO role set ?", newRole),
+            {name: answer.addRole, salary: answer.salary},
+        )
+    }
 }
 
 module.exports = new connection(database)
