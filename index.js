@@ -80,7 +80,8 @@ async function addRoles(err, res) {
     //     choices: ,
     //   },
 ])
-    const newRole = await connection.newRole
+    
+    const newRole = await connection.addRoles
     console.table(newRole)
 
 }

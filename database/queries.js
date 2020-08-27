@@ -25,9 +25,9 @@ class connection {
         )
     }
 
-    addRoles(newRole) {
+    addRoles(answer) {
         return this.database.query(
-            ("INSERT INTO role set ?", newRole),
+            ("INSERT INTO role set ?", newRoles),
             {name: answer.addRole, salary: answer.salary},
         )
     }
