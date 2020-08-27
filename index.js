@@ -63,7 +63,7 @@ async function viewRoles(err, res) {
 
 async function addRoles(err, res) {
     if (err) throw err;
-    inquirer.prompt([{
+    const newRole = await inquirer.prompt([{
         name: "addRole",
         type: "input",
         message: "Please give the new Role a name:"
@@ -81,7 +81,7 @@ async function addRoles(err, res) {
     //   },
 ])
     
-    const newRole = await connection.addRoles
-    console.table(newRole)
+    const addNewRole = await connection.addRoles
+    console.table(addNewRole)
 
 }
