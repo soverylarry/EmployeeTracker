@@ -28,6 +28,10 @@ class connection {
     addRoles(newRole) {
         return this.database.query("INSERT INTO role set ?", newRole)
     }
+
+    addEmployees(newEmployee) {
+        return this.database.query("INSERT INTO employee set ?", newEmployee)
+    }
 }
 
 module.exports = new connection(database)

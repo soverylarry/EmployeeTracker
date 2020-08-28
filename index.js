@@ -97,8 +97,9 @@ async function addRoles(err, res) {
 async function addEmployees(err, res) {
     if (err) throw err;
     const empList = await connection.employees;
-    //const mgrs_ids = 
-    const newEmployee = await inquirer.prompt([
+    const mgrs_ids = await connection.employees.manager_id;
+    // console.log(mgrs_ids)
+    const newlyEmployeed = await inquirer.prompt([
         {
             name: "role_id",
             type: "input",
@@ -114,13 +115,14 @@ async function addEmployees(err, res) {
             type: "input",
             message: "Enter new employees last name"
         },
-        {
-            name: "manager_id",
-            type: "list",
-            message: "Select a Manager's ID",
-            choices: mgrs_ids
-        }
+        // {
+        //     name: "manager_id",
+        //     type: "list",
+        //     message: "Select a Manager's ID",
+        //     choices: mgrs_ids
+        // }
     ])
-    console.log(newEmployee)
-    console.log(empList)
+    console.table(newlyEmployeed)
+    console.log(mgrs_ids)
+    console.table(empList)
 }
