@@ -1,5 +1,4 @@
 const connection = require('./database/queries.js')
-//Const's will reside here
 const database = require('./database/app.js')
 const inquirer = require('inquirer');
 const { viewEmployees, departments } = require('./database/queries.js');
@@ -63,8 +62,9 @@ async function viewRoles(err, res) {
 
 async function addRoles(err, res) {
     if (err) throw err;
+    const deptList = await connection.departments;
     const newRole = await inquirer.prompt([{
-        name: "addRole",
+        name: "title",
         type: "input",
         message: "Please give the new Role a name:"
     },
@@ -73,15 +73,22 @@ async function addRoles(err, res) {
         type: "input",
         message: "Enter starting Salary"
     },
-    // {
-    //     name: "department",
-    //     type: "list",
-    //     message: "Select a department",
-    //     choices: ,
-    //   },
+    {
+        name: "department_id",
+        type: "list",
+        message: "Select a department",
+        choices: deptList
+    }
 ])
-    
-    const addNewRole = await connection.addRoles
-    console.table(newRole)
+    console.log(newRole)
+    console.log(deptList)
 
+    // for (let i = 0, i < deptList.length; i++) {
+    //     if (newRole.name === newRole.department_id){
+    //         then finalID = newRole.answer.id
+    //     }
+    // }
+
+    const addNewRole = await connection.addRoles(newRole);
+    console.table(newRole)
 }
