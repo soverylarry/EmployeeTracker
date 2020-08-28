@@ -79,16 +79,48 @@ async function addRoles(err, res) {
         message: "Select a department",
         choices: deptList
     }
-])
+    ])
     console.log(newRole)
     console.log(deptList)
 
-    // for (let i = 0, i < deptList.length; i++) {
-    //     if (newRole.name === newRole.department_id){
-    //         then finalID = newRole.answer.id
-    //     }
-    // }
+    for (i = 0; i < deptList.length; i++) {
+        if (deptList[i].name === newRole.department_id) {
+            newRole.department_id = deptList[i].id
+            break;
+        }
+    }
 
     const addNewRole = await connection.addRoles(newRole);
     console.table(newRole)
+}
+
+async function addEmployees(err, res) {
+    if (err) throw err;
+    const empList = await connection.employees;
+    //const mgrs_ids = 
+    const newEmployee = await inquirer.prompt([
+        {
+            name: "role_id",
+            type: "input",
+            message: "Enter new employees ID number"
+        },
+        {
+            name: "first_name",
+            type: "input",
+            message: "Enter new employees first name"
+        },
+        {
+            name: "last_name",
+            type: "input",
+            message: "Enter new employees last name"
+        },
+        {
+            name: "manager_id",
+            type: "list",
+            message: "Select a Manager's ID",
+            choices: mgrs_ids
+        }
+    ])
+    console.log(newEmployee)
+    console.log(empList)
 }
