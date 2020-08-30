@@ -109,7 +109,13 @@ async function addEmployees(err, res) {
         {
             name: "id",
             type: "input",
-            message: "Enter new employees ID number"
+            message: "Enter new employees ID number",
+            validate: function(val) {
+                if(isNaN(val) === false) {
+                  return true;
+                }
+                return "Please enter a valid number, hit ESC to re-enter";
+              }
         },
         {
             name: "first_name",
@@ -131,6 +137,7 @@ async function addEmployees(err, res) {
 
     const addNewHire = await connection.addEmployees(newlyEmployeed);
     console.table(newlyEmployeed)
+    console.log("Great job! Here is your new employee lineup!")
     console.table(await connection.employees)
     
 }
