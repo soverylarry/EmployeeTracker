@@ -169,7 +169,6 @@ async function addDepartments(err, res) {
 
 async function updateRoles(err, res) {
     if (err) throw err;
-    // const currentRoles = await connection.roles(title)
     const roleList = await connection.roles;
     const existingRoles = [];
     for (i = 0; i < roleList.length; i++) {
@@ -180,9 +179,28 @@ async function updateRoles(err, res) {
         {
             name: "title",
             type: "list",
-            message: "Select an Existing Role to Modify",
+            message: "Select an Existing Role, and then input a salary to update",
             choices: existingRoles
+        },
+        { 
+            name: "salary",
+            type: "input",
+            message: "Input a new Salary"
         }
-        
     ])
+        .then((answer) => {
+            updateRoles.query(
+                "INSERT INTO role SET ?",
+                {
+                    salary: answer.salary
+                },
+                function (err) {
+                    if (err) throw err;
+                    
+                })
+                console.log("Here's your role with Updated salary!")
+                newRoleList = connection.roles(newRoleDeets),
+                console.tables(newRoleList)
+            
+        });
 }
