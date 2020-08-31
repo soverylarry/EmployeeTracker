@@ -32,6 +32,14 @@ class connection {
     addEmployees(newEmployee) {
         return this.database.query("INSERT INTO employee set ?", newEmployee)
     }
+
+    addDepartments(newDepartments) {
+        return this.database.query("INSERT INTO department set ?", newDepartments)
+    }
+
+    updateRoles(rolesUpdated){
+        return this.database.query("UPDATE role set WHERE?", rolesUpdated)
+    }
 }
 
 module.exports = new connection(database)

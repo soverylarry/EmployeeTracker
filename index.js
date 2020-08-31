@@ -101,7 +101,7 @@ async function addEmployees(err, res) {
     const mgrIds = [];
     for (i = 0; i < empList.length; i++) {
         let id = empList[i].id
-        mgrIds.push(id)  
+        mgrIds.push(id)
     }
     console.log(mgrIds)
     console.table(empList)
@@ -110,12 +110,12 @@ async function addEmployees(err, res) {
             name: "id",
             type: "input",
             message: "Enter new employees ID number",
-            validate: function(val) {
-                if(isNaN(val) === false) {
-                  return true;
+            validate: function (val) {
+                if (isNaN(val) === false) {
+                    return true;
                 }
                 return "Please enter a valid number, hit ESC to re-enter";
-              }
+            }
         },
         {
             name: "first_name",
@@ -139,5 +139,50 @@ async function addEmployees(err, res) {
     console.table(newlyEmployeed)
     console.log("Great job! Here is your new employee lineup!")
     console.table(await connection.employees)
-    
+
+}
+
+async function addDepartments(err, res) {
+    if (err) throw err;
+    const newDepts = await inquirer.prompt([{
+        name: "name",
+        type: "input",
+        message: "Please give the new Department a name:"
+    },
+    {
+        name: "id",
+        type: "input",
+        message: "Give new dept a new ID number",
+        validate: function (val) {
+            if (isNaN(val) === false) {
+                return true;
+            }
+            return "Please enter a valid number, hit ESC to re-enter";
+        }
+    }
+    ])
+    newDeptsList = await connection.addDepartments(newDepts);
+    const deptList = await connection.departments;
+    console.log("Here's is your NEW deparment list!")
+    console.table(deptList)
+}
+
+async function updateRoles(err, res) {
+    if (err) throw err;
+    // const currentRoles = await connection.roles(title)
+    const roleList = await connection.roles;
+    const existingRoles = [];
+    for (i = 0; i < roleList.length; i++) {
+        let id = roleList[i].title
+        existingRoles.push(id)
+    }
+    const newRoleDeets = await inquirer.prompt([
+        {
+            name: "title",
+            type: "list",
+            message: "Select an Existing Role to Modify",
+            choices: existingRoles
+        }
+        
+    ])
 }
