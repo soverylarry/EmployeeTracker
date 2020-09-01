@@ -189,19 +189,20 @@ async function updateRoles(err, res) {
         }
     ])
 
-    connection.updateRoles.id
+   // connection.updateRoles.title
+   await connection.updateRoles(newRoleDeets.title, newRoleDeets.salary)
 
-    await connection.updateRoles(
-        [newRoleDeets.salary,
-        {
-            name: "roleList[i].title",
-            value: "roleList[i].id"
-        }],
-        function (err) {
-            if (err) throw err;
-        })
+    // await connection.updateRoles(
+    //     [newRoleDeets.salary,
+    //     {
+    //         name: "roleList[i].title",
+    //         value: "roleList[i].id"
+    //     }],
+    //     function (err) {
+    //         if (err) throw err;
+    //     })
     console.log("Here's your role with Updated salary!")
-    newRoleList = connection.roles()
-    console.tables(newRoleList)
+    const newRoleList = await connection.roles
+    console.table(newRoleList)
 
 }

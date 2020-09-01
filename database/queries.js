@@ -37,8 +37,10 @@ class connection {
         return this.database.query("INSERT INTO department set ?", newDepartments)
     }
 
-    updateRoles(rolesUpdated){
-        return this.database.query("UPDATE role set salary = ? WHERE id = ?", rolesUpdated)
+    updateRoles(title, salary){
+        return this.database.query("UPDATE role set salary = ? WHERE title = ?", [
+            salary, title
+        ])
     }
 }
 
