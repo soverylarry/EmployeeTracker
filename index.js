@@ -188,18 +188,21 @@ async function updateRoles(err, res) {
             message: "Input a new Salary"
         }
     ])
+    console.log (existingRoles)
         .then((answer) => {
             //const salaryId = connection.updateRoles.id
             //console.log(salaryID)
             
             connection.updateRoles(
-                ([answer.salary]
-                ),
+                [answer.salary],
+                // for (i = 0; i < roleList.length; i++) {
+                //     let id = roleList[i].title
+                //     existingRoles.push(id)
                 function (err) {
                     if (err) throw err;
                 })
             console.log("Here's your role with Updated salary!")
-            newRoleList = await connection.roles()
+            newRoleList = connection.roles()
             console.tables(newRoleList)
         });
 }
