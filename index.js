@@ -182,25 +182,24 @@ async function updateRoles(err, res) {
             message: "Select an Existing Role, and then input a salary to update",
             choices: existingRoles
         },
-        { 
+        {
             name: "salary",
             type: "input",
             message: "Input a new Salary"
         }
     ])
         .then((answer) => {
-            updateRoles.query(
-                "INSERT INTO role SET ?",
-                {
-                    salary: answer.salary
-                },
+            //const salaryId = connection.updateRoles.id
+            //console.log(salaryID)
+            
+            connection.updateRoles(
+                ([answer.salary]
+                ),
                 function (err) {
                     if (err) throw err;
-                    
                 })
-                console.log("Here's your role with Updated salary!")
-                newRoleList = connection.roles(newRoleDeets),
-                console.tables(newRoleList)
-            
+            console.log("Here's your role with Updated salary!")
+            newRoleList = await connection.roles()
+            console.tables(newRoleList)
         });
 }

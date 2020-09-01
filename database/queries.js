@@ -38,7 +38,7 @@ class connection {
     }
 
     updateRoles(rolesUpdated){
-        return this.database.query("UPDATE role set WHERE?", rolesUpdated)
+        return this.database.query("UPDATE role set salary = ? WHERE id = ?", rolesUpdated)
     }
 }
 
