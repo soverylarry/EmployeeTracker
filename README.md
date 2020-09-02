@@ -10,7 +10,7 @@
 
 ### Usage:    Enter 'node index.js' to initiate app.
 
-<img src="/EmployeeTracker-screenShot">
+<img src="/EmployeeTracker-screenShot.png">
 
 ### Licenses: MIT
 ### Contributors:         Developer, tutor and TA.
