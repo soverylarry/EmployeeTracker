@@ -13,5 +13,5 @@
 ### Licenses: MIT
 ### Contributors:         Developer, tutor and TA.
 ### Testing Requirements: None
-### GitHub pic: <img alt="D'oh!" src="assets/LLBridgeReduced.png">
+<img alt="D'oh!" src="LLBridgeReduced.png">
 ### To email developer: soverylarry@gmail.com
