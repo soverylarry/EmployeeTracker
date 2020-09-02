@@ -2,8 +2,7 @@
 # GitHub Username:   Soverylarry
 
 # Project Title:     EmployeeTracker
-## <img src= "https://img.shields.io/github/languages/count/soverylarry/EmployeeTracker"> ## <img src="https://img.shields.io/github/license/soverylarry/EmployeeTracker">
-
+### <img src= "https://img.shields.io/github/languages/count/soverylarry/EmployeeTracker">  <img src="https://img.shields.io/github/license/soverylarry/EmployeeTracker">
 
 ## Project Description:        EmployeeTracker is a command line app that uses Node.js, mySQL and Inquirer to create, view and add to an employee database.
 
