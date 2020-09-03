@@ -16,7 +16,7 @@ const questions = [{
     { name: 'update employee roles', value: 'update_roles' }
     ]
 }]
-
+//Switch cases for the various user choices
 init();
 function init() {
     inquirer.prompt(questions)
@@ -40,26 +40,26 @@ function init() {
         })
 }
 
-
+//View all employees function
 async function viewAllEmployees(err, res) {
     if (err) throw err;
     const employees = await connection.employees;
     //console.log(employees)
     console.table(employees)
 }
-
+//View all departments function
 async function viewDepartments(err, res) {
     if (err) throw err;
     const departments = await connection.departments;
     console.table(departments)
 }
-
+//View all Roles function
 async function viewRoles(err, res) {
     if (err) throw err;
     const roles = await connection.roles;
     console.table(roles)
 }
-
+//Add new roles to the database
 async function addRoles(err, res) {
     if (err) throw err;
     const deptList = await connection.departments;
@@ -94,7 +94,7 @@ async function addRoles(err, res) {
     const addNewRole = await connection.addRoles(newRole);
     console.table(newRole)
 }
-
+//Add new employees to the database
 async function addEmployees(err, res) {
     if (err) throw err;
     const empList = await connection.employees;
@@ -141,7 +141,7 @@ async function addEmployees(err, res) {
     console.table(await connection.employees)
 
 }
-
+//Add new employee Departments
 async function addDepartments(err, res) {
     if (err) throw err;
     const newDepts = await inquirer.prompt([{
@@ -166,7 +166,7 @@ async function addDepartments(err, res) {
     console.log("Here's is your NEW deparment list!")
     console.table(deptList)
 }
-
+//Add new roles to the roster of roles
 async function updateRoles(err, res) {
     if (err) throw err;
     const roleList = await connection.roles;
