@@ -191,9 +191,3 @@ async function updateRoles(err, res) {
 
    // connection.updateRoles.title
    await connection.updateRoles(newRoleDeets.title, newRoleDeets.salary)
-
-    console.log("Here's your role with Updated salary!")
-    const newRoleList = await connection.roles
-    console.table(newRoleList)
-
-}
